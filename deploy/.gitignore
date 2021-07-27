@@ -1,1 +1,12 @@
 state
+.ssh
+00-base
+02-disk-partition
+04-install-grub
+*.tar.gz
+*.img
+*.json
+hello-world.yml
+ubuntu.yml
+ubuntu2.yml
+start.bat

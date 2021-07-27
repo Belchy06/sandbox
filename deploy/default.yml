@@ -1,0 +1,38 @@
+version: "0.1"
+name: default
+global_timeout: 1800
+tasks:
+  - name: "os-installation"
+    worker: "{{.device_1}}"
+    volumes:
+      - /dev:/dev
+      - /dev/console:/dev/console
+      - /lib/firmware:/lib/firmware:ro
+    actions:
+      - name: "disk-wipe"
+        image: disk-wipe:v1
+        timeout: 90
+      - name: "stream-thanos-image"
+        image: image2disk:v1.0.0
+        timeout: 600
+        environment:
+          DEST_DISK: /dev/sda
+          IMG_URL: "http://192.168.1.1:8080/thanos-x86_64.raw.gz"
+          COMPRESSED: true
+      - name: "write-pixelstreaming-config"
+        image: writefile:v1.0.0
+        timeout: 90
+        environment:
+          DEST_DISK: /dev/sda1
+          FS_TYPE: ext4
+          DEST_PATH: /config
+          CONTENTS: google.com
+          UID: 0
+          GID: 0
+          MODE: 0600
+          DIRMODE: 0700
+      - name: "reboot"
+        image: reboot:1.0
+        timeout: 90
+        volumes:
+          - /worker:/worker

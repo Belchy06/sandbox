@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\deploy",
+    "\\deploy\\vagrant",
+    "\\test\\vagrant"
+  ],
+  "SelectedNode": "\\shell.nix",
+  "PreviewInSolutionExplorer": false
+}

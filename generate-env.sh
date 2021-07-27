@@ -95,6 +95,7 @@ generate_env() (
 		export FACILITY=onprem
 		export ROLLBAR_TOKEN=ignored
 		export ROLLBAR_DISABLE=1
+		export TINKERBELL_SKIP_NETWORKING=0
 	EOF
 )
 

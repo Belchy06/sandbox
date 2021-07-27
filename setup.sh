@@ -499,9 +499,7 @@ do_setup() (
 	# shellcheck disable=SC1090
 	source "$ENV_FILE"
 
-	if [[ -z $TINKERBELL_SKIP_NETWORKING ]]; then
-		setup_networking "$lsb_dist" "$lsb_version"
-	fi
+	setup_networking "$lsb_dist" "$lsb_version"
 	setup_osie
 	generate_certificates
 	setup_docker_registry
