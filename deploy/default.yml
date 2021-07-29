@@ -10,7 +10,7 @@ tasks:
       - /lib/firmware:/lib/firmware:ro
     actions:
       - name: "disk-wipe"
-        image: disk-wipe:v1
+        image: disk-wipe:v1.0.0
         timeout: 90
       - name: "stream-thanos-image"
         image: image2disk:v1.0.0
@@ -32,7 +32,7 @@ tasks:
           MODE: 0600
           DIRMODE: 0700
       - name: "reboot"
-        image: reboot:1.0
+        image: reboot:v1.0.0
         timeout: 90
         volumes:
           - /worker:/worker
