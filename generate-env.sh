@@ -22,10 +22,8 @@ err() (
 )
 
 candidate_interfaces() (
-	ip -o link show |
-		awk -F': ' '{print $2}' |
-		sed 's/[ \t].*//;/^\(lo\|bond0\|\|\)$/d' |
-		sort
+	ip -o link show | awk -F': ' '{print $2}' | sed 's/[ \t].*//;/^\(lo\|bond0\|\|\)$/d' | sort
+
 )
 
 validate_tinkerbell_network_interface() (
@@ -80,11 +78,10 @@ generate_env() (
 		export TINKERBELL_HOST_IP=${TINKERBELL_HOST_IP:-"192.168.1.1"}
 
 		# Boots options
-		export ENABLE_DEFAULT_WORKFLOWS=${ENABLE_DEFAULT_WORKFLOWS:-"1"}
-		export START_IP=${START_IP:-"192.168.1.2"}
-		export SUBNET_MASK=${SUBNET_MASK:-"255.255.255.248"}
+		export ENABLE_DEFAULT_WORKFLOWS=${ENABLE_DEFAULT_WORKFLOWS:-""}
+		export START_IP=${START_IP:-"192.168.1.100"}/${TINKERBELL_CIDR:-"29"}
 		export GATEWAY_IP=${GATEWAY_IP:-"192.168.1.1"}
-		export LEASE_RANGE=${LEASE_RANGE:-"4"}
+		export LEASE_RANGE=${LEASE_RANGE:-"50"}
 
 		# Tink server username and password
 		export TINKERBELL_TINK_USERNAME=admin
@@ -102,6 +99,7 @@ generate_env() (
 		export FACILITY=onprem
 		export ROLLBAR_TOKEN=ignored
 		export ROLLBAR_DISABLE=1
+		export TINKERBELL_SKIP_NETWORKING=0
 	EOF
 )
 

@@ -17,16 +17,21 @@ tasks:
         timeout: 600
         environment:
           DEST_DISK: /dev/sda
-          IMG_URL: "http://192.168.1.1:8080/thanos-x86_64.raw.gz"
+          IMG_URL: "http://192.168.1.254:8080/thanos-x86_64.raw.gz"
           COMPRESSED: true
       - name: "write-pixelstreaming-config"
         image: writefile:v1.0.0
         timeout: 90
         environment:
           DEST_DISK: /dev/sda1
-          FS_TYPE: ext4
           DEST_PATH: /config
-          CONTENTS: google.com
+          FS_TYPE: ext4
+          CONTENTS: >-
+            {
+              "url": "google.com", 
+              "resx":1920,
+              "resy":1440
+            }
           UID: 0
           GID: 0
           MODE: 0600
