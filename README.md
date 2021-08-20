@@ -1,3 +1,11 @@
+## Default workflows
+We had to make some modifications to the stack to get Tinkerbell to provision with default workflows.
+
+If you are interested in using these default workflows or plan on provision ThanOS with Tinkerbell, you can find more information in [PROD.MD](https://github.com/Belchy06/sandbox/blob/master/PROD.MD)
+
+
+## ReadMe
+
 This repository is a quick way to get the Tinkerbell stack up and running.
 
 Currently it supports:
