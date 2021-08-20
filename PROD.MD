@@ -85,3 +85,8 @@ The reboot action touches a file that the hook-docker system service watches for
 To upload the default template, open a terminal in the `deploy` folder and run: `tink template create ./default.yml`
 
 ### You are now all set, enjoy Tinking
+
+## If you plan on provisioning ThanOS
+If you plan on using the Tinkerbell stack, with default workflows, to provision ThanOS, head over to https://github.com/Belchy06/ThanOS where you can download the latest release or clone the repo and build from source.
+
+Just make sure to place the `.raw` or `.raw.gz` file in `deploy/state/webroot`.
